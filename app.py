@@ -6,5 +6,17 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/wallet')
+def wallet():
+    return render_template('wallet.html')
+
+@app.route('/trade')
+def trade():
+    return render_template('trade.html')
+
+@app.route('/logs')
+def logs():
+    return render_template('logs.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

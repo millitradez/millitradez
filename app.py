@@ -14,9 +14,5 @@ def wallet():
 def trade():
     return render_template('trade.html')
 
-@app.route('/logs')
-def logs():
-    return render_template('logs.html')
-
 if __name__ == '__main__':
     app.run(debug=True)

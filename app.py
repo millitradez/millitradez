@@ -1,18 +1,21 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+def index():
+    return render_template("index.html")
 
-@app.route('/wallet')
-def wallet():
-    return render_template('wallet.html')
+@app.route('/trade', methods=['GET', 'POST']) def trade():
+    if request.method == 'POST':
+        pair = request.form['pair']
+        amount = request.form['amount']
+        contract_address = request.form['contract_address']
 
-@app.route('/trade')
-def trade():
-    return render_template('trade.html')
+        message = f"Trading {amount} of {pair} using contract {contract_address}."
+        return render_template("trade.html", message=message)
 
-if __name__ == '__main__':
+    return render_template("trade.html")
+
+if __name__ == "__main__":
     app.run(debug=True)

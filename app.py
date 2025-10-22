@@ -10,7 +10,8 @@ def index():
 def wallet():
     return render_template('wallet.html')
 
-@app.route('/trade', methods=['GET', 'POST']) def trade():
+@app.route('/trade', methods=['GET', 'POST']) 
+def trade():
     if request.method == 'POST':
         pair = request.form.get('pair')
         amount = request.form.get('amount')
